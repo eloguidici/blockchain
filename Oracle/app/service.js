@@ -24,11 +24,11 @@ function listenEvent(lastBlock) {
 }
 
 function getDataFromOracle() {
-    const url = 'https://api.nasa.gov/neo/rest/v1/feed?start_date=2019-10-12&end_date=2019-10-16&api_key=DEMO_KEY'
+    const url = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales'
 
     fetch(url)
         .then(response => response.json())
-        .then(json => set(json.element_count));
+        .then(json => set(json));
 }
 
 function set(_value) {

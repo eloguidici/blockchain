@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node api.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon api.js"
   },
   "keywords": [],
   "author": "Alberto Lasa <alberto.lasa@gmail.com> (http:albertolasa.es)",

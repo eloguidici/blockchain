@@ -1,8 +1,26 @@
-pragma solidity ^0.5.0;
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.4.22 <0.9.0;
 
 contract Oracle {
   address owner;
-  uint public dollar;
+ mapping(string => stu) public dollars;
+   struct stu{
+        string code;
+        string name;
+        string value;
+    }
+
+  constructor() public {
+    owner = msg.sender;
+  }
+
+ function set(string memory _code,string memory _name,string memory _value) public onlyOwner {
+      dollars[_code] = stu(_code,_name, _value);
+  }
+
+  function get(string memory _code) view public returns (string memory _value) {
+    return (dollars[_code].value);
+  }
 
   event __calbackNewDollarValueData();
 
@@ -11,21 +29,8 @@ contract Oracle {
     _;
   }
 
-  constructor() public {
-    owner = msg.sender;
-    dollar = 100;
-  }
-
   function update() public onlyOwner {
     emit __calbackNewDollarValueData();
-  }
-
-  function set(uint _value) public onlyOwner {
-    dollar = _value;
-  }
-
-  function get() view public returns (uint) {
-    return dollar;
   }
 
 }
